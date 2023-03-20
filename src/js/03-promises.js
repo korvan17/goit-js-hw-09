@@ -25,9 +25,7 @@ function onFormSubmit(event) {
   let d = refs.delay;
   setPromise(p, d);
   refs.position += 1;
-  console.log(`🚀 ~ refs.position:`, p);
   refs.delay += refs.step;
-  console.log(`🚀 ~ refs.delay:`, d);
   onFormSubmit(event);
 }
 
@@ -40,7 +38,6 @@ function setPromise(position, delay) {
       .catch(({ position, delay }) => {
         Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
       });
-    console.log("setTimeout - ", delay, id);
   }, delay);
 }
 

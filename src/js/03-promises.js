@@ -1,9 +1,9 @@
 import { Notify } from "notiflix/build/notiflix-notify-aio";
 
-const form = document.querySelector(".form");
 const refs = {
   position: 0,
 };
+const form = document.querySelector(".form");
 
 form.addEventListener("submit", onFormSubmit);
 

@@ -504,10 +504,10 @@ function hmrAcceptRun(bundle, id) {
 
 },{}],"8tzFL":[function(require,module,exports) {
 var _notiflixNotifyAio = require("notiflix/build/notiflix-notify-aio");
-const form = document.querySelector(".form");
 const refs = {
     position: 0
 };
+const form = document.querySelector(".form");
 form.addEventListener("submit", onFormSubmit);
 function onFormSubmit(event) {
     event.preventDefault();

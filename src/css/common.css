@@ -1,5 +1,6 @@
 @import "./colorSwitch.css";
 @import "./fireworks.css";
+@import "./timer.css";
 
 * {
   box-sizing: border-box;

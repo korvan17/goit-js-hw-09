@@ -2,8 +2,8 @@ import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
 const input = document.querySelector("#datetime-picker");
-
 const refs = {
+  field: document.querySelectorAll(".field"),
   startButton: document.querySelector("[data-start]"),
   days: document.querySelector("[data-days]"),
   hours: document.querySelector("[data-hours]"),
@@ -16,6 +16,12 @@ const refs = {
     this.seconds.textContent = addLeadingZero(seconds);
   },
 };
+
+function randomColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
+}
 
 refs.startButton.disabled = true;
 let ms = null;
@@ -76,6 +82,7 @@ function setTime(ms) {
 refs.startButton.addEventListener("click", () => {
   refs.startButton.disabled = true;
   intervalId = setInterval(() => {
+    refs.field.forEach((val) => (val.style.backgroundColor = randomColor()));
     setTime(ms);
   }, 1000);
 });
@@ -89,6 +96,7 @@ function createFirework() {
   firework.classList.add("firework");
   firework.style.left = Math.random() * 100 + "%";
   firework.style.top = Math.random() * 100 + "%";
+  firework.style.background = randomColor();
   fireworksContainer.appendChild(firework);
 
   setTimeout(function () {

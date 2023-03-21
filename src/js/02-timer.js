@@ -1,7 +1,6 @@
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
-Notify.failure("Qui timide rogat docet negare");
 const input = document.querySelector("#datetime-picker");
 
 const refs = {
@@ -75,6 +74,7 @@ function setTime(ms) {
 }
 
 refs.startButton.addEventListener("click", () => {
+  refs.startButton.disabled = true;
   intervalId = setInterval(() => {
     setTime(ms);
   }, 1000);

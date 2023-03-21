@@ -1,32 +1,23 @@
 import { Notify } from "notiflix/build/notiflix-notify-aio";
 
-const refs = {
-  position: 0,
-};
+const refs = {};
 const form = document.querySelector(".form");
 
 form.addEventListener("submit", onFormSubmit);
 
 function onFormSubmit(event) {
   event.preventDefault();
-  if (!refs.delay) {
-    const formData = new FormData(event.currentTarget);
-    formData.forEach((val, name) => {
-      refs[name] = Number(val);
-    });
-    form.reset();
+  const formData = new FormData(event.currentTarget);
+  formData.forEach((val, name) => {
+    refs[name] = Number(val);
+  });
+  form.reset();
+  for (let i = 1; i <= refs.amount; i += 1) {
+    let position = i;
+    let delay = refs.delay;
+    setPromise(position, delay);
+    refs.delay += refs.step;
   }
-  if (refs.position >= refs.amount) {
-    refs.delay = undefined;
-    refs.position = 0;
-    return;
-  }
-  let p = refs.position;
-  let d = refs.delay;
-  setPromise(p, d);
-  refs.position += 1;
-  refs.delay += refs.step;
-  onFormSubmit(event);
 }
 
 function setPromise(position, delay) {
